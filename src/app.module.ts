@@ -10,9 +10,9 @@ import {
 } from './config';
 import { TypeOrmConfigService } from './database';
 import { RawMaterialCategoryModule } from './raw-material-category';
+import { UnitModule } from './unit';
 
 @Module({
-  controllers: [],
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
@@ -31,7 +31,7 @@ import { RawMaterialCategoryModule } from './raw-material-category';
       },
     }),
     RawMaterialCategoryModule,
+    UnitModule,
   ],
-  providers: [],
 })
 export class AppModule {}
