@@ -11,6 +11,7 @@ import {
 import { TypeOrmConfigService } from './database';
 import { RawMaterialCategoryModule } from './raw-material-category';
 import { UnitModule } from './unit';
+import { SupplierModule } from './supplier/supplier.module';
 
 @Module({
   imports: [
@@ -32,6 +33,7 @@ import { UnitModule } from './unit';
     }),
     RawMaterialCategoryModule,
     UnitModule,
+    SupplierModule,
   ],
 })
 export class AppModule {}
