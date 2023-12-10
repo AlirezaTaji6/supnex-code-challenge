@@ -7,6 +7,7 @@ import {
   OneToMany,
 } from 'typeorm';
 import { ParentEntity } from '../../database';
+import { StockTransaction } from '../../stock-transaction/entities/stock-transaction.entity';
 import { Unit } from '../../unit/repository/unit.entity';
 import { RawMaterialCategory } from '../raw-material-category/repository/raw-material-category.entity';
 import { RawMaterialPrice } from './raw-material-price.entity';
@@ -36,4 +37,10 @@ export class RawMaterial extends ParentEntity {
 
   @OneToMany(() => RawMaterialPrice, (prices) => prices.rawMaterial)
   prices: RawMaterialPrice[];
+
+  @OneToMany(
+    () => StockTransaction,
+    (stockTransactions) => stockTransactions.rawMaterial,
+  )
+  stockTransactions: StockTransaction[];
 }

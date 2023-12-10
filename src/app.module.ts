@@ -10,6 +10,7 @@ import {
 } from './config';
 import { TypeOrmConfigService } from './database';
 import { RawMaterialModule } from './raw-material';
+import { StockTransactionModule } from './stock-transaction';
 import { SupplierModule } from './supplier';
 import { UnitModule } from './unit';
 
@@ -34,6 +35,7 @@ import { UnitModule } from './unit';
     UnitModule,
     SupplierModule,
     RawMaterialModule,
+    StockTransactionModule,
   ],
 })
 export class AppModule {}
