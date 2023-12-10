@@ -9,7 +9,7 @@ import {
   Query,
 } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
-import { IdDto, PaginationResponse, SearchDto } from '../common';
+import { IdDto, PaginationResponse, SearchDto } from 'src/common';
 import {
   CreateRawMaterialCategoryDto,
   RawMaterialCategoryResponse,

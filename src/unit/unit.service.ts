@@ -3,7 +3,11 @@ import { DeleteFailed, UpdateFailed } from 'src/common';
 import { CreateUnitDto, UpdateUnitDto } from './dto';
 import { Unit } from './repository/unit.entity';
 import { UnitRepo } from './repository/unit.repository';
-import { UnitNameDuplicated, UnitSymbolDuplicated } from './unit.exception';
+import {
+  UnitNameDuplicated,
+  UnitNotFound,
+  UnitSymbolDuplicated,
+} from './unit.exception';
 
 @Injectable()
 export class UnitsService {
@@ -49,5 +53,10 @@ export class UnitsService {
       const unit = await this.repo.findBySymbol(symbol);
       if (unit) throw new UnitSymbolDuplicated();
     }
+  }
+
+  async isExistsById(id: number) {
+    const exists = await this.repo.isExistsById(id);
+    if (!exists) throw new UnitNotFound();
   }
 }

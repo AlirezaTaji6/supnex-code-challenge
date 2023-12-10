@@ -20,6 +20,10 @@ export class SupplierRepo extends Repository<Supplier> {
     });
   }
 
+  findById(id: number): Promise<Supplier> {
+    return this.findOne({ where: { id } });
+  }
+
   async findByName(name: string): Promise<Supplier> {
     return this.findOne({ where: { name } });
   }

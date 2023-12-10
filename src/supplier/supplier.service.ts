@@ -3,7 +3,7 @@ import { DeleteFailed, IListCount, SearchDto, UpdateFailed } from 'src/common';
 import { CreateSupplierDto, UpdateSupplierDto } from './dto';
 import { SupplierRepo } from './repository/suppler.repository';
 import { Supplier } from './repository/supplier.entity';
-import { SupplierNameDuplicated } from './supplier.exception';
+import { SupplierNameDuplicated, SupplierNotFound } from './supplier.exception';
 
 @Injectable()
 export class SuppliersService {
@@ -11,6 +11,12 @@ export class SuppliersService {
 
   async findMany(dto: SearchDto): Promise<IListCount<Supplier>> {
     return this.repo.findMany(dto);
+  }
+
+  async findOne(id: number): Promise<Supplier> {
+    const supplier = await this.repo.findById(id);
+    if (!supplier) throw new SupplierNotFound();
+    return supplier;
   }
 
   async create(dto: CreateSupplierDto): Promise<Supplier> {

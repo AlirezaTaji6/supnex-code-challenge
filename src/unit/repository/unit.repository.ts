@@ -19,4 +19,9 @@ export class UnitRepo extends Repository<Unit> {
   async findBySymbol(symbol: string) {
     return this.findOne({ where: { symbol } });
   }
+
+  async isExistsById(id: number): Promise<boolean> {
+    const unit = await this.findOne({ where: { id } });
+    return Boolean(unit);
+  }
 }

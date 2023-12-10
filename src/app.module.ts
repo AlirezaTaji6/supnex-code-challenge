@@ -9,9 +9,9 @@ import {
   swaggerConfig,
 } from './config';
 import { TypeOrmConfigService } from './database';
-import { RawMaterialCategoryModule } from './raw-material-category';
+import { RawMaterialModule } from './raw-material';
+import { SupplierModule } from './supplier';
 import { UnitModule } from './unit';
-import { SupplierModule } from './supplier/supplier.module';
 
 @Module({
   imports: [
@@ -31,9 +31,9 @@ import { SupplierModule } from './supplier/supplier.module';
         return dataSource;
       },
     }),
-    RawMaterialCategoryModule,
     UnitModule,
     SupplierModule,
+    RawMaterialModule,
   ],
 })
 export class AppModule {}

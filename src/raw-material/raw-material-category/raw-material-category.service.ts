@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { DeleteFailed, IListCount, SearchDto, UpdateFailed } from '../common';
+import { DeleteFailed, IListCount, SearchDto, UpdateFailed } from 'src/common';
 import {
   CreateRawMaterialCategoryDto,
   UpdateRawMaterialCategoryDto,
