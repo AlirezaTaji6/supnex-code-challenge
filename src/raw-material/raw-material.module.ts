@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { StockTransactionBridgeModule } from '../stock-transaction/bridge/stock-transaction-bridge.module';
 import { SupplierModule } from '../supplier';
 import { UnitModule } from '../unit';
 import { RawMaterialPriceController } from './controllers/raw-material-price.controller';
@@ -18,6 +19,7 @@ import { RawMaterialService } from './services/raw-material.service';
     RawMaterialCategoryModule,
     UnitModule,
     SupplierModule,
+    StockTransactionBridgeModule,
   ],
   controllers: [RawMaterialController, RawMaterialPriceController],
   providers: [

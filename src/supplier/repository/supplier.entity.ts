@@ -1,7 +1,7 @@
 import { Column, Entity, Index, OneToMany } from 'typeorm';
 import { ParentEntity } from '../../database';
 import { RawMaterialPrice } from '../../raw-material/repository/raw-material-price.entity';
-import { StockTransaction } from '../../stock-transaction/entities/stock-transaction.entity';
+import { StockTransaction } from '../../stock-transaction/repository/stock-transaction.entity';
 
 @Entity('suppliers')
 @Index('suppliers_name_UNIQUE', ['name'], {

@@ -8,6 +8,7 @@ import {
   TypeormTransactionTemplate,
   UpdateFailed,
 } from '../../common';
+import { StockTransactionBridgeService } from '../../stock-transaction/bridge';
 import { UnitsService } from '../../unit';
 import { CreateRawMaterialDto } from '../dto/create-raw-material.dto';
 import { UpdateRawMaterialDto } from '../dto/update-raw-material.dto';
@@ -27,6 +28,7 @@ export class RawMaterialService {
     private readonly rawMaterialPriceRepo: RawMaterialPriceRepo,
     private readonly unitsSerivce: UnitsService,
     private readonly categoryService: RawMaterialCategoryService,
+    private readonly stockTransactionService: StockTransactionBridgeService,
     @InjectDataSource()
     private readonly dataSource: DataSource,
   ) {}
@@ -82,8 +84,19 @@ export class RawMaterialService {
     if (exists) throw new RawMaterialNameDuplicated();
   }
 
-  findMany(dto: SearchDto): Promise<IListCount<RawMaterial>> {
-    return this.repo.findMany(dto);
+  async findMany(
+    dto: SearchDto,
+  ): Promise<IListCount<RawMaterial & { stock: number }>> {
+    const { data, count } = await this.repo.findMany(dto);
+    const list = [];
+    for await (const rawMaterial of data) {
+      const stock =
+        await this.stockTransactionService.getBalanceByRawMaterialId(
+          rawMaterial.id,
+        );
+      list.push({ ...rawMaterial, stock });
+    }
+    return { data: list, count };
   }
 
   async findOne(id: number): Promise<RawMaterial> {

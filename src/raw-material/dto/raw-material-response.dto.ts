@@ -25,6 +25,9 @@ export class RawMaterialResponse {
   @ApiPropertyOptional({ type: RawMaterialCategoryResponse })
   category?: RawMaterialCategoryResponse;
 
+  @ApiProperty()
+  stock?: number;
+
   constructor(init: Partial<RawMaterialResponse>) {
     this.id = init.id;
     this.name = init.name;
@@ -38,5 +41,6 @@ export class RawMaterialResponse {
     this.category = init.category
       ? new RawMaterialCategoryResponse(init.category)
       : undefined;
+    this.stock = init.stock || 0;
   }
 }

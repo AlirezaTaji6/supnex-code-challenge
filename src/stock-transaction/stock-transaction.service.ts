@@ -2,8 +2,8 @@ import { Injectable } from '@nestjs/common';
 import { RawMaterialService } from '../raw-material';
 import { SuppliersService } from '../supplier';
 import { ChangeStockDto } from './dto';
-import { StockTransaction } from './entities/stock-transaction.entity';
-import { StockTransactionRepo } from './entities/stock-transaction.repository';
+import { StockTransaction } from './repository/stock-transaction.entity';
+import { StockTransactionRepo } from './repository/stock-transaction.repository';
 import { StockBalanceCannotBeNegative } from './stock-transaction.exception';
 
 @Injectable()

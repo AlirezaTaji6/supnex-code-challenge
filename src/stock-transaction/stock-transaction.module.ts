@@ -2,8 +2,8 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { RawMaterialModule } from '../raw-material';
 import { SupplierModule } from '../supplier';
-import { StockTransaction } from './entities/stock-transaction.entity';
-import { StockTransactionRepo } from './entities/stock-transaction.repository';
+import { StockTransaction } from './repository/stock-transaction.entity';
+import { StockTransactionRepo } from './repository/stock-transaction.repository';
 import { StockTransactionController } from './stock-transaction.controller';
 import { StockTransactionService } from './stock-transaction.service';
 

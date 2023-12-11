@@ -41,12 +41,6 @@ export class RawMaterialController {
     );
   }
 
-  @Get(':id')
-  async findOne(@Param() { id }: IdDto): Promise<RawMaterialResponse> {
-    const rawMaterial = await this.rawMaterialService.findOne(id);
-    return new RawMaterialResponse(rawMaterial);
-  }
-
   @Patch(':id')
   async update(@Param() { id }: IdDto, @Body() dto: UpdateRawMaterialDto) {
     await this.rawMaterialService.update(id, dto);
