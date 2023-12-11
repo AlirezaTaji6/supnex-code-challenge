@@ -21,6 +21,9 @@ export class ChangeStockDto {
 
 export class StockTransactionResponse {
   @ApiProperty()
+  id: number;
+
+  @ApiProperty()
   rawMaterialId: number;
 
   @ApiPropertyOptional({ type: RawMaterialResponse })
@@ -39,6 +42,7 @@ export class StockTransactionResponse {
   balance: number;
 
   constructor(init: Partial<StockTransactionResponse>) {
+    this.id = init.id;
     this.rawMaterial = init.rawMaterial
       ? new RawMaterialResponse(init.rawMaterial)
       : undefined;

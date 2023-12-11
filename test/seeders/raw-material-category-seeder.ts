@@ -3,10 +3,11 @@ import { ITestRepository } from '../repository';
 
 export function rawMaterialCategorySeeder(
   repository: ITestRepository,
+  input?: { name: string },
 ): Promise<RawMaterialCategory> {
   return repository.rawMaterialCategory.save(
     repository.rawMaterialCategory.create({
-      name: 'gram',
+      name: input ? input.name : 'gram',
     }),
   );
 }

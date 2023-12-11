@@ -1,20 +1,20 @@
 import { HttpStatus, INestApplication } from '@nestjs/common';
 import * as request from 'supertest';
-import { RawMaterialMessages } from '../src/raw-material';
+import { RawMaterialMessages } from '../../src/raw-material';
 import {
   RawMaterialPriceResponse,
   RawMaterialResponse,
-} from '../src/raw-material/dto';
-import { RawMaterialCategoryMessages } from '../src/raw-material/raw-material-category';
-import { RawMaterialPriceRepo } from '../src/raw-material/repository/raw-material-price.repository';
-import { UnitMessages } from '../src/unit/unit.exception';
-import { beforeAllUtil } from './before-all';
-import { TestRepository } from './repository';
-import { rawMaterialCategorySeeder } from './seeders/raw-material-category-seeder';
-import { rawMaterialSeeder } from './seeders/raw-material-seeder';
-import { supplierSeeder } from './seeders/supplier-seeder';
-import { unitSeeder } from './seeders/unit-seeder';
-import { ValidationTester } from './validation-tester';
+} from '../../src/raw-material/dto';
+import { RawMaterialCategoryMessages } from '../../src/raw-material/raw-material-category';
+import { RawMaterialPriceRepo } from '../../src/raw-material/repository/raw-material-price.repository';
+import { UnitMessages } from '../../src/unit/unit.exception';
+import { beforeAllUtil } from '../before-all';
+import { TestRepository } from '../repository';
+import { rawMaterialCategorySeeder } from '../seeders/raw-material-category-seeder';
+import { rawMaterialSeeder } from '../seeders/raw-material-seeder';
+import { supplierSeeder } from '../seeders/supplier-seeder';
+import { unitSeeder } from '../seeders/unit-seeder';
+import { ValidationTester } from '../validation-tester';
 
 describe('Create Raw Material (e2e)', () => {
   let app: INestApplication;

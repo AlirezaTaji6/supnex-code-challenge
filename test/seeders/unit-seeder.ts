@@ -1,11 +1,14 @@
 import { Unit } from '../../src/unit/repository/unit.entity';
 import { ITestRepository } from '../repository';
 
-export function unitSeeder(repository: ITestRepository): Promise<Unit> {
+export function unitSeeder(
+  repository: ITestRepository,
+  input?: { name: string; symbol: string },
+): Promise<Unit> {
   return repository.unit.save(
     repository.unit.create({
-      name: 'gram',
-      symbol: 'g',
+      name: input ? input.name : 'gram',
+      symbol: input ? input.symbol : 'g',
     }),
   );
 }
