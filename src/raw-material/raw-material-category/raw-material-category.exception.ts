@@ -1,6 +1,6 @@
 import { ConflictException, NotFoundException } from '@nestjs/common';
 
-enum RawMaterialCategoryMessages {
+export enum RawMaterialCategoryMessages {
   NOT_FOUND = 'raw-material-category.NOT_FOUND',
   NAME_DUPLICATED = 'raw-material-category.NAME_DUPLICATED',
 }

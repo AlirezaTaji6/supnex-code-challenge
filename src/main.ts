@@ -4,7 +4,11 @@ import { NestFactory, Reflector } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { useContainer } from 'class-validator';
 import { AppModule } from './app.module';
-import { CommonResponseInterceptor, Environments } from './common';
+import {
+  CommonResponseInterceptor,
+  Environments,
+  validationOptions,
+} from './common';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, { cors: true });
@@ -16,7 +20,7 @@ async function bootstrap() {
     exclude: ['/'],
   });
 
-  app.useGlobalPipes(new ValidationPipe({ whitelist: true }));
+  app.useGlobalPipes(new ValidationPipe(validationOptions));
   app.useGlobalInterceptors(new CommonResponseInterceptor());
   const reflector = app.get(Reflector);
 

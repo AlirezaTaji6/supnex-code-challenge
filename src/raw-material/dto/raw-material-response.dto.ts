@@ -31,16 +31,23 @@ export class RawMaterialResponse {
   constructor(init: Partial<RawMaterialResponse>) {
     this.id = init.id;
     this.name = init.name;
-    this.prices =
-      init.prices && init.prices.length
-        ? init.prices.map((price) => new RawMaterialPriceResponse(price))
-        : undefined;
+
+    if (init.prices && init.prices.length) {
+      this.prices = init.prices.map(
+        (price) => new RawMaterialPriceResponse(price),
+      );
+    }
+
     this.unitId = init.unitId;
-    this.unit = init.unit ? new UnitResponse(init.unit) : undefined;
+    if (init.unit) {
+      this.unit = new UnitResponse(init.unit);
+    }
+
     this.categoryId = init.categoryId;
-    this.category = init.category
-      ? new RawMaterialCategoryResponse(init.category)
-      : undefined;
+    if (init.category) {
+      this.category = new RawMaterialCategoryResponse(init.category);
+    }
+
     this.stock = init.stock || 0;
   }
 }

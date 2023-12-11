@@ -22,8 +22,8 @@ export class RawMaterialPriceResponse {
     this.rawMaterialId = init.rawMaterialId;
     this.price = init.price;
     this.supplierId = init.supplierId;
-    this.supplier = init.supplier
-      ? new SupplierResponse(init.supplier)
-      : undefined;
+    if (init.supplier) {
+      this.supplier = new SupplierResponse(init.supplier);
+    }
   }
 }

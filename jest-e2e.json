@@ -1,0 +1,22 @@
+{
+  "moduleFileExtensions": ["js", "json", "ts"],
+  "rootDir": ".",
+  "testEnvironment": "node",
+  "testRegex": ".e2e-spec.ts$",
+  "transform": {
+      "^.+\\.(t|j)s$": "ts-jest"
+  },
+  "maxConcurrency": 1,
+  "testTimeout": 20000,
+  "modulePaths": [
+    "node_modules",
+    "<rootDir>"
+  ],
+  "moduleNameMapper": {
+    "src/(.*)": "<rootDir>/src/$1"
+  },
+  "snapshotFormat": {
+    "escapeString": true,
+    "printBasicPrototype": true
+  }
+}

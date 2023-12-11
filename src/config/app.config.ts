@@ -10,7 +10,7 @@ export const appConfig = registerAs('app', () => ({
 
 export const appConfigValidation = {
   NODE_ENV: Joi.string()
-    .valid(Environments.DEVELOP, Environments.PRODUCTION)
+    .valid(Environments.TEST, Environments.DEVELOP, Environments.PRODUCTION)
     .default(Environments.DEVELOP),
   APP_PORT: Joi.number().default(3000),
   API_PREFIX: Joi.string().default('api'),
